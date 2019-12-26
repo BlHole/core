@@ -60,9 +60,6 @@ public class Topic52 {
             return res;
         }
     }
-    /**
-     * col[0], dia1[7], dia2[0]
-     */
 
     public static void main(String[] args) {
         int n = new Topic52().new Solution().totalNQueens(8);
