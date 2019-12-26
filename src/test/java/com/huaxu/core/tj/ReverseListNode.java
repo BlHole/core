@@ -18,7 +18,7 @@ public class ReverseListNode {
             node.next = new ListNode(i);
             node = node.next;
         }
-        ListNode partition = new ReverseListNode().reverseList(head.next);
+        ListNode partition = new ReverseListNode().reverse(head.next);
         while (partition != null) {
             System.out.print(partition.val + " ");
             partition = partition.next;
@@ -27,8 +27,7 @@ public class ReverseListNode {
 
     public ListNode reverse(ListNode node) {
         if (node == null || node.next == null) return node;
-        ListNode head = node, next = node.next;
-        head.next = null;
+        ListNode head = new ListNode(node.val), next = node.next;
         while (next.next != null) {
             ListNode nextNext = next.next;
             next.next = head;
