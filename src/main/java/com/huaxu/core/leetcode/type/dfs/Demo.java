@@ -1,4 +1,4 @@
-package com.huaxu.core.leetcode.dfs;
+package com.huaxu.core.leetcode.type.dfs;
 
 /**
  * <p>项目名称: leetcode</p>

@@ -12,7 +12,7 @@ public class TestListNode {
             node.next = new ListNode(i);
             node = node.next;
         }
-        ListNode partition = new TestListNode().reverse(head.next);
+        ListNode partition = new TestListNode().reverseList(head.next);
         while (partition != null) {
             System.out.print(partition.val + " ");
             partition = partition.next;
@@ -28,5 +28,13 @@ public class TestListNode {
             node = nodeNext;
         }
         return root.next;
+    }
+
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode p = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
     }
 }

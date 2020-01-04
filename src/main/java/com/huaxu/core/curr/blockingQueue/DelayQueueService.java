@@ -33,9 +33,11 @@ public class DelayQueueService implements Delayed {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         DelayQueue<DelayQueueService> delayQueue = new DelayQueue<>();
-        delayQueue.put(new DelayQueueService(System.currentTimeMillis() + 2*1000,"异步通知3"));
-        delayQueue.put(new DelayQueueService(System.currentTimeMillis() + 4*1000,"异步通知2"));
-        delayQueue.put(new DelayQueueService(System.currentTimeMillis() + 8*1000,"异步通知1"));
+        delayQueue.put(new DelayQueueService(start + 3*1000,"异步通知1"));
+        delayQueue.put(new DelayQueueService(start + 2*1000,"异步通知2"));
+        delayQueue.put(new DelayQueueService(start + 3*1000,"异步通知3"));
+        delayQueue.put(new DelayQueueService(start + 4*1000,"异步通知4"));
+        delayQueue.put(new DelayQueueService(start + 5*1000,"异步通知5"));
 
         try {
             while(true){
@@ -47,18 +49,15 @@ public class DelayQueueService implements Delayed {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return unit.convert(time - new Date().getTime(), TimeUnit.NANOSECONDS);
+        return unit.convert(this.time - System.currentTimeMillis(), TimeUnit.NANOSECONDS);
     }
 
     @Override
     public int compareTo(Delayed o) {
-        return 0;
+        return (int) (this.getDelay(TimeUnit.NANOSECONDS) - o.getDelay(TimeUnit.NANOSECONDS));
     }
-
-
 }

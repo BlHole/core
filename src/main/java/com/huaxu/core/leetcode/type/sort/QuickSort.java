@@ -1,4 +1,4 @@
-package com.huaxu.core.tj;
+package com.huaxu.core.leetcode.type.sort;
 
 import java.util.Arrays;
 
