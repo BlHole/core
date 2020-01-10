@@ -30,15 +30,18 @@ public class BinTreePractice {
         rightN.right = new TreeNode(7);
         root.right = rightN;
 
-        DLR.recDLR(root);
-        DLR.stackDLR(root);
-        DLR.queueDLR(root);
-        DLR.newDLR(root);
+//        DLR.recDLR(root);
+//        DLR.stackDLR(root);
+//        DLR.queueDLR(root);
+//        DLR.newDLR(root);
+//
+//        LDR.recDLR(root);
+//        LDR.stackDLR(root);
+//
+//        Level.foreach(root);
 
-        LDR.recDLR(root);
-        LDR.stackDLR(root);
-
-        Level.foreach(root);
+//        LRD.recDLR(root);
+        LRD.stackDLR(root);
 
     }
 
@@ -123,6 +126,40 @@ public class BinTreePractice {
                 TreeNode pop = stack.pop();
                 System.out.println(pop.val);
                 root = pop.right;
+            }
+        }
+    }
+
+    // 后序遍历
+    static class LRD {
+        // 递归
+        private static void recDLR(TreeNode root) {
+            if (root != null) {
+                recDLR(root.left);
+                recDLR(root.right);
+                System.out.println(root.val);
+            }
+        }
+
+        // 堆栈
+        private static void stackDLR(TreeNode root) {
+            Stack<TreeNode> stack = new Stack();
+            TreeNode flag = null;
+            while (true) {
+                while (root != null) {
+                    stack.push(root);
+                    root = root.left;
+                }
+                if (stack.isEmpty()) break;
+                TreeNode pop = stack.pop();
+
+                if (pop.right == null || pop.right == flag) {
+                    System.out.println(pop.val);
+                    flag = pop;
+                } else {
+                    stack.push(pop.right);
+                    root = pop.right;
+                }
             }
         }
     }
