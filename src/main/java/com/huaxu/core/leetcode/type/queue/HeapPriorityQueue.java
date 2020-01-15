@@ -13,11 +13,19 @@ import java.util.Stack;
 public class HeapPriorityQueue {
 
     public static void main(String[] args) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>( new Comparator<Integer>() {
+        PriorityQueue<Integer> queue = new PriorityQueue<>(2, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1 - o2;
             }
         });
+
+        queue.offer(3);
+        queue.offer(1);
+        queue.offer(2);
+
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
+        }
     }
 }

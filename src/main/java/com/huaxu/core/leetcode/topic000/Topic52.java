@@ -10,54 +10,32 @@ public class Topic52 {
 
     class Solution {
 
-        /**
-         * 记录某列是否已有皇后摆放
-         */
-        private boolean col[];
-
-        /**
-         * 记录某条正对角线（左上右下）是否已有皇后摆放（某条对角线对应的摆放位置为 x - y + n - 1）
-         */
-        private boolean dia1[];
-
-        /**
-         * 记录某条斜对角线（左下右上）是否已有皇后摆放（某条对角线对应的摆放位置为 x + y）
-         */
-        private boolean dia2[];
+        private int res;
+        private boolean[] cols;
+        private boolean[] leftDown; // i + j
+        private boolean[] rightDown; // i - j + n
 
         public int totalNQueens(int n) {
-            col = new boolean[n];
-            dia1 = new boolean[2 * n - 1];
-            dia2 = new boolean[2 * n - 1];
-            return putQueen(n, 0);
+            cols = new boolean[n];
+            leftDown = new boolean[n << 1];
+            rightDown = new boolean[n << 1];
+            solution(n, 0);
+            return res;
         }
 
-        /**
-         * 递归回溯方式摆放皇后
-         *
-         * @param n     待摆放皇后个数
-         * @param index 已摆放皇后个数
-         */
-        private int putQueen(int n, int index) {
-            int res = 0;
-            if (index == n) {
-                return 1;
-            }
-            // 表示在 index 行的第 i 列尝试摆放皇后
-            for (int i = 0; i < n; i++) {
-                if (!col[i] && !dia1[i - index + n - 1] && !dia2[i + index]) {
-                    // 递归
-                    col[i] = true;
-                    dia1[i - index + n - 1] = true;
-                    dia2[i + index] = true;
-                    res += putQueen(n, index + 1);
-                    // 回溯
-                    col[i] = false;
-                    dia1[i - index + n - 1] = false;
-                    dia2[i + index] = false;
+        private void solution(int n, int i) {
+            if (n == i) res ++;
+            for (int j = 0; j < n; j++) {
+                if (!cols[j] && !leftDown[i + j] && !rightDown[i - j + n]) {
+                    cols[j] = true;
+                    leftDown[i + j] = true;
+                    rightDown[i - j + n] = true;
+                    solution(n, i + 1);
+                    cols[j] = false;
+                    leftDown[i + j] = false;
+                    rightDown[i - j + n] = false;
                 }
             }
-            return res;
         }
     }
 

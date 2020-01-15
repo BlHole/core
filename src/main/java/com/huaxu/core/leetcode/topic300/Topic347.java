@@ -12,35 +12,45 @@ public class Topic347 {
 
 
     public static void main(String[] args) {
-        List<Integer> list = new Solution().topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2);
+        List<Integer> list = new Topic347().new Solution().topKFrequent(new int[]{1, 1, 1, 2, 2, 3}, 2);
         list.forEach(entry -> System.out.println(entry));
     }
 
-    static class Solution {
+    class Solution {
+
+        class Node {
+            int key;
+            int value;
+
+            public Node(int key, int value) {
+                this.key = key;
+                this.value = value;
+            }
+        }
+
         public List<Integer> topKFrequent(int[] nums, int k) {
-            // build hash map : character and how often it appears
-            HashMap<Integer, Integer> count = new HashMap();
-            for (int n: nums) {
-                count.put(n, count.getOrDefault(n, 0) + 1);
+            Map<Integer, Integer> map = new HashMap<>();
+            for (Integer num : nums) {
+                Integer count = map.get(num);
+                map.put(num, count == null ? 1 : count + 1);
             }
 
-            // init heap 'the less frequent element first'
-            PriorityQueue<Integer> heap =
-                    new PriorityQueue<Integer>((n1, n2) -> count.get(n1) - count.get(n2));
+            PriorityQueue<Node> queue = new PriorityQueue<>(k, new Comparator<Node>() {
+                @Override
+                public int compare(Node o1, Node o2) {
+                    return o2.value - o1.value;
+                }
+            });
 
-            // keep k top frequent elements in the heap
-            for (int n: count.keySet()) {
-                heap.add(n);
-                if (heap.size() > k)
-                    heap.poll();
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                queue.offer(new Node(entry.getKey(), entry.getValue()));
             }
 
-            // build output list
-            List<Integer> top_k = new LinkedList();
-            while (!heap.isEmpty())
-                top_k.add(heap.poll());
-            Collections.reverse(top_k);
-            return top_k;
+            List<Integer> res = new ArrayList<>();
+            while (k-- > 0) {
+                res.add(queue.poll().key);
+            }
+            return res;
         }
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.data.redis.listener.Topic;
 public class Topic91 {
 
     public static void main(String[] args) {
-        int i = new Topic91().new Solution().numDecodings("1234");
+        int i = new Topic91().new Solution().numDecodings("17");
         System.out.println(i);
     }
 
@@ -27,25 +27,23 @@ public class Topic91 {
 
     class Solution {
         public int numDecodings(String s) {
-            if (s.charAt(0) == '0') return 0;
-
+            if (s.length() == 0 || s.charAt(0) == '0') return 0;
             char[] chars = s.toCharArray();
-            return decode(chars, chars.length - 1);
+            return encode(chars, chars.length);
         }
 
-        int decode(char[] chars, int index) {
-            if (index <= 0) return 1;
+        private int encode(char[] chars, int length) {
+
+            if (length <= 1) return 1;
+            char prev = chars[length - 2];
+            char curr = chars[length - 1];
 
             int count = 0;
-            char curr = chars[index];
-            char prev = chars[index - 1];
-            // 当前字符比 “0” 大，则直接利用它之前的字符串所求得的结果
-            if (curr > '0') {
-                count = decode(chars, index - 1);
+            if (curr != '0') {
+                count = encode(chars, length - 1);
             }
-            // 由前一个字符和当前字符所构成的数字，值必须要在 1 到 26 之间，否则无法进行解码
-            if (prev == '1' || (prev == '2' && curr <= '6')) {
-                count += decode(chars, index - 2);
+            if (prev == '1' || (prev == '2' && (curr >= '0' && curr <= '6'))) {
+                count += encode(chars, length - 2);
             }
             return count;
         }
