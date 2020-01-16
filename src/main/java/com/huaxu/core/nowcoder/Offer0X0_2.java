@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * <p>create: 2020/01/16 11:45</p>
  * <p>author：huaxu</p>
  */
-public class Offer01_2 {
+public class Offer0X0_2 {
 
     class Solution {
         // a->b = (a + b) * (b - a + 1) / 2
