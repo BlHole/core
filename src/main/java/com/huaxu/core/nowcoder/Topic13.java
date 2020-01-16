@@ -26,7 +26,7 @@ public class Topic13 {
         int low = 0, fast = 0, length = array.length;
         while (fast < length && low < length) {
             while (fast < length && (array[fast] & 1) == 0) fast ++;
-            if (fast == length) return;
+            if (fast != length) return;
             int temp = array[fast], limit = fast - low;
             while (limit > 0) {
                 array[low + limit] = array[low + limit - 1];
