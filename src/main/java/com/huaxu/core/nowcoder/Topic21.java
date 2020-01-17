@@ -1,8 +1,6 @@
 package com.huaxu.core.nowcoder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * <p>project: core</p>
@@ -33,5 +31,32 @@ public class Topic21 {
             }
         }
         return stack.isEmpty();
+    }
+
+    static int[] in = {1, 2, 3, 4};
+
+    public static void main(String[] args) {
+        fun(0,new Stack<>(),"");
+    }
+
+    /**
+     *  给定一个压入栈的顺序， 获取所有出栈的结果
+     */
+    static void fun(int n, Stack<Integer> stk, String sout) {
+        if(n == in.length && stk.isEmpty()){
+            System.out.println(sout);
+            return;
+        }
+        Stack<Integer> s1 = (Stack<Integer>) stk.clone();
+        Stack<Integer> s2 = (Stack<Integer>) stk.clone();
+        if (n < in.length) {
+            s1.push(in[n]);
+            fun(n + 1, s1, sout);
+        }
+        if (!s2.isEmpty()) {
+            String temp = sout + s2.peek();
+            s2.pop();
+            fun(n, s2, temp);
+        }
     }
 }
