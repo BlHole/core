@@ -16,10 +16,10 @@ import java.util.ArrayList;
  *
  *  links: https://www.nowcoder.com/practice/c451a3fd84b64cb19485dad758a55ebe?tpId=13&tqId=11194&tPage=3&rp=3&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  */
-public class Offer0X0 {
+public class Topic39 {
 
     public static void main(String[] args) {
-        ArrayList<ArrayList<Integer>> arrayLists = new Offer0X0().new Solution().FindContinuousSequence(3);
+        ArrayList<ArrayList<Integer>> arrayLists = new Topic39().new Solution().FindContinuousSequence(3);
     }
 
     class Solution {
