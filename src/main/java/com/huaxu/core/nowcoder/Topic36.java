@@ -15,7 +15,7 @@ import java.util.LinkedList;
  * 题目描述
  * 输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
  *
- * links:
+ * links: https://www.nowcoder.com/questionTerminal/435fb86331474282a3499955f0a41e8b
  */
 public class Topic36 {
 
