@@ -21,7 +21,7 @@ public class MergeSort {
         int mid = lo + (hi - lo) / 2;
         sort(arr, lo, mid);
         sort(arr, mid + 1, hi);
-        merge(arr, arr.clone(), lo, mid, hi);
+        merge(arr, lo, mid, hi);
     }
 
     /**
@@ -32,22 +32,27 @@ public class MergeSort {
      *
      *  index = 每次得到的值的游标
      */
-    private static void merge(int[] arr, int[] copy, int lo, int mid, int hi) {
-        int index = lo, left = lo, right = mid + 1;
+    private static void merge(int[] array, int lo, int mid, int hi) {
+        int index = 0, left = lo, right = mid + 1;
+        int length = hi - lo + 1;
+        int[] copy = new int[length];
 
-        while (index <= hi) {
+        while (index < length) {
             if (left > mid) {
-                arr[index ++] = copy[right ++];
+                copy[index ++] = array[right ++];
 
             } else if (right > hi) {
-                arr[index ++] = copy[left ++];
+                copy[index ++] = array[left ++];
 
-            } else if (copy[left] < copy[right]) {
-                arr[index ++] = copy[left ++];
+            } else if (array[left] <= array[right]) {
+                copy[index ++] = array[left ++];
 
             } else {
-                arr[index ++] = copy[right ++];
+                copy[index ++] = array[right ++];
             }
+        }
+        for (int i = 0; i < length; i++) {
+            array[i + lo] = copy[i];
         }
     }
 }
