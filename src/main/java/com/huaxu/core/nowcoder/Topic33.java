@@ -24,46 +24,49 @@ package com.huaxu.core.nowcoder;
  *      输入  1,2,3,4,5,6,7,0
  *      输出  7
  *
- * links:
+ * links: https://www.nowcoder.com/questionTerminal/96bd6684e04a44eb80e6a68efc0ec6c5
  */
 public class Topic33 {
 
-    public static void main(String[] args) {
-        int i = new Topic33().InversePairs(new int[]{1, 2, 3, 4, 5, 6, 7, 0});
-        System.out.println(i);
+    private int cnt;
+
+    public int InversePairs(int[] array) {
+        if (array == null || array.length == 0) return 0;
+        mergeSort(array, 0, array.length - 1);
+        return cnt;
     }
 
-    private int cnt;
-    private void MergeSort(int[] array, int start, int end){
-        if(start>=end)return;
-        int mid = (start+end)/2;
-        MergeSort(array, start, mid);
-        MergeSort(array, mid+1, end);
-        MergeOne(array, start, mid, end);
+    private void mergeSort(int[] array, int lo, int hi) {
+        if (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            mergeSort(array, lo, mid);
+            mergeSort(array, mid + 1, hi);
+            mergeArr(array, lo, mid, hi);
+        }
     }
-    private void MergeOne(int[] array, int start, int mid, int end){
-        int[] temp = new int[end-start+1];
-        int k=0,i=start,j=mid+1;
-        while(i<=mid && j<= end){
-//如果前面的元素小于后面的不能构成逆序对
-            if(array[i] <= array[j])
-                temp[k++] = array[i++];
-            else{
-//如果前面的元素大于后面的，那么在前面元素之后的元素都能和后面的元素构成逆序对
-                temp[k++] = array[j++];
-                cnt = (cnt + (mid-i+1))%1000000007;
+
+    private void mergeArr(int[] array, int lo, int mid, int hi) {
+        int index = 0, left = lo, right = mid + 1;
+        int length = hi - lo + 1;
+        int[] copy = new int[length];
+
+        while (index < length) {
+            if (left > mid) {
+                copy[index ++] = array[right ++];
+
+            } else if (right > hi) {
+                copy[index ++] = array[left ++];
+
+            } else if (array[left] <= array[right]) {
+                copy[index ++] = array[left ++];
+
+            } else {
+                cnt = (cnt + (mid - left + 1)) % 1000000007;
+                copy[index ++] = array[right ++];
             }
         }
-        while(i<= mid)
-            temp[k++] = array[i++];
-        while(j<=end)
-            temp[k++] = array[j++];
-        for(int l=0; l<k; l++){
-            array[start+l] = temp[l];
+        for (int i = 0; i < length; i++) {
+            array[i + lo] = copy[i];
         }
-    }
-    public int InversePairs(int [] array) {
-        MergeSort(array, 0, array.length-1);
-        return cnt;
     }
 }
