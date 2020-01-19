@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  *      links: https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&tqId=11195&tPage=3&rp=3&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking
  */
-public class Offer0X1_1 {
+public class Topic40 {
 
     class Solution {
         public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {

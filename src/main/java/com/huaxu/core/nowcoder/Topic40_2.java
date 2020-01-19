@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * <p>create: 2020/01/16 14:16</p>
  * <p>author：huaxu</p>
  */
-public class Offer0X1_2 {
+public class Topic40_2 {
 
     class Solution {
         public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
