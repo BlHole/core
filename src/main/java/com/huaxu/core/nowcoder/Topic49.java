@@ -20,22 +20,17 @@ import java.util.LinkedList;
 public class Topic49 {
 
     public boolean match(char[] str, char[] pattern) {
-
-        boolean[] map = new boolean[pattern.length];
-        return dfs(str, pattern, map, 0);
-    }
-
-    private boolean dfs(char[] str, char[] pattern, boolean[] map, int index) {
-        if (index == str.length) return true;
-        for (int i = 0; i < str.length; i++) {
-            if (pattern[i] == '.') continue;
-            else if (pattern[i] == '*') {
-
-            } else if (str[i] == pattern[i] && !map[i]) {
-                map[i] = true;
-                dfs(str, pattern, map, index++);
-                map[i] = false;
+        int i = 0, j = 0, lStr = str.length, pStr= pattern.length;
+        while (i < lStr && j < pStr) {
+            if ('.' == pattern[j] || str[i] == pattern[j]) {
+                i ++; j++;
+                continue;
             }
+            if (str[i] != pattern[j] && j + 1 < pStr) {
+
+            }
+
         }
+        return i == lStr && j == pStr;
     }
 }
