@@ -1,5 +1,7 @@
 package com.huaxu.core.nowcoder;
 
+import com.huaxu.core.leetcode.basic.ListNode;
+
 /**
  * <p>project: core</p>
  * <p>description: </p>
@@ -21,17 +23,6 @@ package com.huaxu.core.nowcoder;
  * 如果没有小朋友，请返回-1
  */
 public class Topic44 {
-
-    public static void main(String[] args) {
-        int i = new Topic44().LastRemaining_Solution(5, 3);
-        System.out.println(i);
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int val) { this.val = val; }
-    }
 
     public int LastRemaining_Solution(int n, int m) {
         if (m == 0 || n == 0) return -1;
