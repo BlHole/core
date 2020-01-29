@@ -29,7 +29,6 @@ public class Topic49 {
             if (str[i] != pattern[j] && j + 1 < pStr) {
 
             }
-
         }
         return i == lStr && j == pStr;
     }
