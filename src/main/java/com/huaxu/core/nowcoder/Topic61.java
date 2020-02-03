@@ -25,7 +25,7 @@ public class Topic61 {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> integers = new Topic61().maxInWindows(new int[]{10,14,12,11}, 4);
+        ArrayList<Integer> integers = new Topic61().maxInWindows(new int[]{2,3,4,2,6,2,5,1}, 3);
         System.out.println(Arrays.toString(integers.toArray()));
     }
 
