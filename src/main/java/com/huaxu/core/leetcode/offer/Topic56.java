@@ -6,10 +6,10 @@ package com.huaxu.core.leetcode.offer;
  * <p>create: 2020/02/28 18:08</p>
  * <p>author：huaxu</p>
  */
-public class Topic51 {
+public class Topic56 {
 
     public static void main(String[] args) {
-        new Topic51().new Solution().singleNumbers(new int[]{1,2,3,4,1,4});
+        new Topic56().new Solution().singleNumbers(new int[]{1,2,3,4,1,4});
     }
 
     class Solution {
