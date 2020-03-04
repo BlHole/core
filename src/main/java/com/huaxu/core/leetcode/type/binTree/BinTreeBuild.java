@@ -16,7 +16,7 @@ public class BinTreeBuild {
         System.out.println(node);
     }
 
-    private static TreeNode buildTree(Integer[] cols, int index) {
+    public static TreeNode buildTree(Integer[] cols, int index) {
         TreeNode root = null;
         if (index < cols.length && cols[index] != null) {
             root = new TreeNode(cols[index]);
