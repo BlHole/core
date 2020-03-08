@@ -79,6 +79,7 @@ public class Topic37 {
                 }
                 i += 2;
             }
+            System.currentTimeMillis();
             return root;
         }
     }
