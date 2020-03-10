@@ -1,4 +1,4 @@
-package com.huaxu.core.junit.conditionCoverage;
+package com.huaxu.core.ci.junit.conditionCoverage;
 
 import org.junit.Assert;
 import org.junit.Test;

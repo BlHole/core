@@ -1,4 +1,4 @@
-package com.huaxu.core.junit.assertTest;
+package com.huaxu.core.ci.junit.assertTest;
 
 import org.junit.Assert;
 import org.junit.Test;

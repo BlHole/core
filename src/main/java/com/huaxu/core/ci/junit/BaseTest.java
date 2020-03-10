@@ -1,4 +1,4 @@
-package com.huaxu.core.junit;
+package com.huaxu.core.ci.junit;
 
 import com.huaxu.core.CoreApplication;
 import com.huaxu.core.middleware.spring.transactional.config.DBConfig1;
@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * <p>项目名称: core</p>
- * <p>文件名称: com.huaxu.core.junit.BaseTest</p>
+ * <p>文件名称: com.huaxu.core.ci.junit.BaseTest</p>
  * <p>文件描述: </p>
  * <p>创建日期: 2019/09/27 14:08</p>
  * <p>创建用户：huaxu</p>

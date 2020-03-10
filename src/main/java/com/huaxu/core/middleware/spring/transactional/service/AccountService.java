@@ -1,6 +1,6 @@
 package com.huaxu.core.middleware.spring.transactional.service;
 
-import com.huaxu.core.junit.BaseTest;
+import com.huaxu.core.ci.junit.BaseTest;
 import com.huaxu.core.middleware.spring.transactional.bean.PayAccount;
 import com.huaxu.core.middleware.spring.transactional.bean.User;
 import com.huaxu.core.middleware.spring.transactional.mapper.db1.PayAccountMapper;
