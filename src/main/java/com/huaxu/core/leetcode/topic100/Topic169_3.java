@@ -11,13 +11,17 @@ public class Topic169_3 {
 
     class Solution {
         public int majorityElement(int[] nums) {
-            int count = 0;
-            int context = 0;
-            for (int num : nums) {
-                if (count == 0)  context = num;
-                count = context == num ? count+1 : count-1;
+            int res = nums[0], count = 0;
+            for (int i = 1; i < nums.length; i ++) {
+                if (res == nums[i]) {
+                    count ++;
+                } else if (count == 0){
+                    res = nums[i];
+                } else {
+                    count --;
+                }
             }
-            return context;
+            return res;
         }
     }
 }
